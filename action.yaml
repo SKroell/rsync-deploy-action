@@ -1,0 +1,17 @@
+# action.yml
+name: 'Deploy with rsync'
+description: 'Deploy with rsync'
+inputs:
+  user_host:
+    required: true
+  dest:
+    required: true
+  rsync_args:
+    required: true
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
+  args:
+    - ${{ inputs.user_host }}
+    - ${{ inputs.dest }}
+    - ${{ inputs.rsync_args }}
